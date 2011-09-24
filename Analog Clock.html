@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Analog Clock Canvas on HTML5</title>
+		<meta name="author" content="neizod">
+		<meta name="Designer" content="neizod">
+		<script language="javascript">
+			var ctx; // declare variable here to make it public.
+			var clockTime;
+			var hourHand, minHand, secHand;
+	
+			function currentTime() {
+				time = new Date();
+				hourTime = time.getHours();
+				minTime = time.getMinutes();
+				secTime = time.getSeconds();
+				// getDay, getDate, getMonth, getYear
+				return [hourTime, minTime, secTime];
+			}
+
+			function angleCal(inTime) {
+				angle = [];
+				angle[0] = inTime[0]%12/12.0 + inTime[1]/1440.0;
+				angle[1] = inTime[1]/60.0;
+				angle[2] = inTime[2]/60.0;
+				for(i = 0; i < angle.length; i++) {
+					angle[i] *= 2*Math.PI
+				}
+				return angle;
+			}
+
+			function drawPolygon(polygonArray, fill) {
+				ctx.fillStyle = fill;
+				ctx.beginPath();
+				ctx.moveTo(polygonArray[0][0], polygonArray[0][1]);
+				for(i = 1; i < polygonArray.length ; i++){
+					ctx.lineTo(polygonArray[i][0], polygonArray[i][1]);
+				}
+				ctx.fill();
+			}
+
+			function Hand(handArray, fill) { // define a class.
+				this.handArray = handArray;
+				this.fill = fill;
+
+				this.draw = function(angle) {
+					ctx.save();
+					ctx.rotate(angle);
+					drawPolygon(this.handArray, this.fill);
+					ctx.restore();
+				}
+			}
+
+			function initHand() {
+				hourArray = [[0, 13], [13, 0], [0, -80], [-13, 0]];
+				minArray = [[0, 8], [8, 0], [0, -128], [-8, 0]];
+				secArray = [[1, 20], [1, -120], [-1, -120], [-1, 20]];
+				hourHand = new Hand(hourArray, "#111111");
+				minHand = new Hand(minArray, "#111111");
+				secHand = new Hand(secArray, "#DD4400");
+				
+				secHand.draw = function(angle) { // method override for secHand.
+					ctx.save();
+					ctx.rotate(angle);
+					drawPolygon(this.handArray, this.fill);
+					// draw pin, shall be merge with secArray if complicated gradien is used.
+					ctx.beginPath();
+					ctx.arc(0, 0, 2.5, 0, 2*Math.PI, true);
+					ctx.fill();
+					ctx.restore();
+				}
+			}
+
+			function drawTopPin() {
+				ctx.save();
+				ctx.fillStyle = "#FF9900";
+				ctx.beginPath();
+				ctx.arc(0, 0, 1.5, 0, 2*Math.PI, true);
+				ctx.fill();
+
+				ctx.fillStyle = "#111111";
+				ctx.beginPath();
+				ctx.arc(0, 0, 1, 0, 2*Math.PI, true);
+				ctx.fill();
+				ctx.restore();
+			}
+
+			function drawClock() {
+				ctx.save(); // save ctx style, must use before useing transformation.
+				ctx.clearRect(0, 0, 300, 300); // clear last frame before drawing new one.
+
+				clockTime = currentTime();
+				angle = angleCal(clockTime);
+
+				ctx.translate(150, 150); // move origin point
+				hourHand.draw(angle[0]);
+				minHand.draw(angle[1]);
+				secHand.draw(angle[2]);
+				drawTopPin();
+
+				ctx.restore(); // restore ctx style at previous save point.
+			}
+
+			function init() {
+				var canvas = document.getElementById("clock");
+				if(canvas.getContext) {
+					ctx = canvas.getContext("2d");
+					initHand();
+					setInterval("drawClock()", 1); // loop drawing the canvas, this is require for animation.
+				}
+			}
+		</script>
+	</head>
+
+	<body onload="init();">
+		<center>
+			<canvas id="clock" width="300" height="300">
+				Sorry, your browser doesn't support HTML5.
+			</canvas>
+		</center>
+	</body>
+</html>

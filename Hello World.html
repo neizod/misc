@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello World canvas on HTML5</title>
+		<meta name="author" content="neizod">
+		<meta name="Designer" content="neizod">
+		<script language="javascript">
+			function draw() {
+				var canvas = document.getElementById("helloworld");
+				var ctx = canvas.getContext("2d");
+				world = new Image();
+				world.src = "image/World.jpg";
+				world.onload = function(){
+					ctx.drawImage(world, 600, 0, 690, 550);
+
+					ctx.fillStyle = "White";
+					// H
+					ctx.fillRect(100, 100, 40, 200);
+					ctx.fillRect(140, 180, 70, 40);
+					ctx.fillRect(210, 100, 40, 200);
+					
+					// E
+					ctx.fillRect(270, 150, 30, 150);
+					ctx.fillRect(290, 150, 70, 30);
+					ctx.fillRect(290, 210, 50, 30);
+					ctx.fillRect(290, 270, 70, 30);
+					
+					// L
+					ctx.fillRect(380, 150, 30, 150);
+					ctx.fillRect(410, 270, 50, 30);
+
+					// L
+					ctx.fillRect(480, 150, 30, 150);
+					ctx.fillRect(510, 270, 50, 30);
+					
+					ctx.fillStyle = "Gold";
+					
+					// O
+					ctx.fillRect(580, 150, 30, 150);
+					ctx.fillRect(610, 150, 50, 30);
+					ctx.fillRect(610, 270, 50, 30);
+					ctx.fillRect(660, 150, 30, 150);
+
+					ctx.fillStyle = "White";
+
+					// ,
+					ctx.fillRect(710, 270, 30, 30);
+					ctx.beginPath();
+					ctx.moveTo(725, 300);
+					ctx.lineTo(718, 324);
+					ctx.lineTo(740, 300);
+					ctx.fill();
+						
+					// National Geographic
+					ctx.fillText("National Geographic", 586, 317);
+				}
+			}
+		</script>
+	</head>
+
+	<body onload="draw();">
+		<center>
+			<canvas id="helloworld" width="1250" height="550" style="background-color:black">
+				Sorry, your browser doesn't support HTML5.
+			</canvas>
+		</center>
+	</body>
+</html>
