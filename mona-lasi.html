@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mona Lasi (Gaga) Canvas on HTML5</title>
+    <meta name="author" content="neizod">
+    <meta name="Designer" content="neizod">
+    <script language="javascript">
+      var ctx;
+
+      function plotGlass() {
+        ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+        ctx.fillRect(278, 178, 22, 18);
+        
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fillRect(314, 178, 24, 18);
+        
+        ctx.fillStyle = "rgb(30, 30, 30)";
+        ctx.fillRect(300, 184, 14, 2);
+      }
+
+      function draw() {
+        var canvas = document.getElementById("monalasi");
+        var mona = document.getElementById("mona");
+        var frame = document.getElementById("frame");
+        if(canvas.getContext) {
+          ctx = canvas.getContext("2d");
+          ctx.drawImage(mona, 147, 59, 356, 532);
+          ctx.drawImage(frame, 98, 5, 453, 640);
+
+          plotGlass();
+        }
+      }
+    </script>
+  </head>
+
+  <body onload="draw();">
+    <center>
+      <canvas id="monalasi" width="650" height="650">
+        Sorry, your browser doesn't support HTML5.
+      </canvas>
+      <img id="mona" src="image/mona-lisa.jpg" style="display:none">
+      <img id="frame" src="image/frame.png" style="display:none">
+    </center>
+  </body>
+</html>
