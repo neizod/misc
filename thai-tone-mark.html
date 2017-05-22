@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<table border="1" class="thaitone">
+  <caption>Thai Tone</caption>
+  <tr>
+      <th rowspan="2" colspan="2"></th>
+      <th colspan="5">Tone Mark</th>
+  </tr>
+  <tr>
+      <th class="fixsize">Common</th>
+      <th class="fixsize">1st</th>
+      <th class="fixsize">2nd</th>
+      <th class="fixsize">3rd</th>
+      <th class="fixsize">4th</th>
+  </tr>
+  <tr>
+      <th rowspan="4"><span class="vert">Alphabet Class</span></th>
+      <th>Mid</th>
+      <td><tone class="nomark"></tone></td>
+      <td><tone class="ek"></tone></td>
+      <td><tone class="tho"></tone></td>
+      <td><tone class="tri"></tone></td>
+      <td><tone class="chtw"></tone></td>
+  </tr>
+  <tr>
+      <th>High</th>
+      <td><tone class="unavail"></tone></td>
+      <td><tone class="ek"></tone></td>
+      <td><tone class="tho"></tone></td>
+      <td><tone class="unavail"></tone></td>
+      <td><tone class="nomark"></tone></td>
+  </tr>
+  <tr>
+      <th>Low</th>
+      <td><tone class="nomark"></tone></td>
+      <td><tone class="unavail"></tone></td>
+      <td><tone class="ek"></tone></td>
+      <td><tone class="tho"></tone></td>
+      <td><tone class="unavail"></tone></td>
+  </tr>
+  <tr>
+      <th>Low*</th>
+      <td><tone class="nomark"></tone></td>
+      <td>ห<tone class="ek"></tone></td>
+      <td>ห<tone class="tho"></tone> / <tone class="ek"></tone></td>
+      <td><tone class="tho"></tone></td>
+      <td>ห<tone class="nomark"></tone></td>
+  </tr>
+</table>
+
+<h3>Note:</h3>
+<ul>
+  <li>Each of alphabet in high class can always pair to low class with exact same sound.</li>
+  <li>However, low* class can not pair back to high tone.</li>
+  <li>This table show only subset of the tone rules.</li>
+</ul>
+
+
+<hr />
+
+
+<table border="1" class="thaitone">
+  <caption>Example</caption>
+  <tr>
+      <th rowspan="2" colspan="2"></th>
+      <th colspan="5">Tone Mark in Word</th>
+  </tr>
+  <tr>
+      <th class="fixsize">Common</th>
+      <th class="fixsize">1st</th>
+      <th class="fixsize">2nd</th>
+      <th class="fixsize">3rd</th>
+      <th class="fixsize">4th</th>
+  </tr>
+  <tr>
+      <th rowspan="4"><span class="vert">Alphabet Class</span></th>
+      <th>Mid</th>
+      <td>ปา<br/>throw</td>
+      <td>ป่า<br/>forrest</td>
+      <td>ป้า<br/>aunt</td>
+      <td>ป๊า<br/>dad</td>
+      <td>ป๋า<br/>rich man</td>
+  </tr>
+  <tr>
+      <th>High</th>
+      <td><tone class="unavail"></tone></td>
+      <td>ข่า<br/>galangal</td>
+      <td>ข้า<br/>me</tone></td>
+      <td><tone class="unavail"></tone></td>
+      <td>ขา<br/>leg</td>
+  </tr>
+  <tr>
+      <th>Low</th>
+      <td>คา<br/>stick</td>
+      <td><tone class="unavail"></tone></td>
+      <td>ค่า<br/>value</td>
+      <td>ค้า<br/>trade</td>
+      <td><tone class="unavail"></tone></td>
+  </tr>
+  <tr>
+      <th>Low*</th>
+      <td>นา<br/>field</td>
+      <td>หน่า<br/>(no meaning)</td>
+      <td>หน้า<br/>face</td>
+      <td>น้า<br/>aunt</td>
+      <td>หนา<br/>thick</td>
+  </tr>
+</table>
+
+<style>
+.vert {
+    writing-mode: vertical-rl;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.thaitone td {
+    text-align: center;
+    height: 0px;
+}
+.thaitone .fixsize {
+    width: 90px;
+}
+tone.unavail {
+    display: block;
+    height: 100%;
+    background: black;
+}
+tone::before {
+    content: "◌";
+}
+tone.ek::after {
+    content: "่";
+}
+tone.tho::after {
+    content: "้";
+}
+tone.tri::after {
+    content: "๊";
+}
+tone.chtw::after {
+    content: "๋";
+}
+</style>
