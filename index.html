@@ -1,0 +1,12 @@
+---
+---
+<!DOCTYPE html>
+
+<h1>Miscellaneous HTML5</h1>
+<ul>
+  {% for file in site.static_files %}
+    {% if file.extname == '.html' %}
+      <li><a href="{{ file.path | prepend: site.baseurl }}">{{ file.path }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
