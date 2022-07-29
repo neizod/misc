@@ -1,0 +1,328 @@
+<style>
+.line {
+  display: flex;
+  align-items: center;
+}
+.line > div:last-child {
+  padding: 0.5em;
+}
+
+.correct {
+  background-color: #9fb;
+}
+
+.incorrect {
+  background-color: #f9a;
+}
+
+.choice {
+  display: inline-block;
+  padding: 0.25em;
+  border: dashed 1px grey;
+  border-radius: 5px;
+}
+
+.dropbox {
+  display: inline-block;
+  min-height: 1.5em;
+  min-width: 3em;
+  padding: 0.25em;
+}
+
+.pairboxes {
+  display: flex;
+  min-width: 170px;
+  align-items: center;
+  justify-content: space-between
+}
+.pairboxes > .dropbox:first-child {
+  flex-grow: 1;
+}
+.pairboxes > .dropbox:last-child {
+  border: solid 1px black;
+  border-radius: 2px;
+}
+</style>
+
+
+<h1>เกมจับคู่ชื่อหนังสือแปล (prototype)</h1>
+
+<p style="max-width: 600px;">
+<b>วิธีเล่น:</b>
+ใช้เมาส์คลิกค้างชื่อหนังสือภาษาไทยด้านซ้าย แล้วลากไปวางไว้ในกล่องที่ตรงกับชื่อหนังสือภาษาอังกฤษด้านขวา
+หากตอบผิดสามารถตอบใหม่ได้เรื่อยๆ
+</p>
+
+<p>
+<b>คะแนน:</b>
+คุณลากวางไปแล้ว <span id="dragcount">0</span> ครั้ง
+</p>
+
+<div id="game">
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l1" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c1" class="choice" draggable="true" ondragstart="drag(event)">
+          อนงคราคา
+        </div>
+      </div>
+      <div id="r1" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>A digit of the Moon</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l2" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c2" class="choice" draggable="true" ondragstart="drag(event)">
+          อติรูป
+        </div>
+      </div>
+      <div id="r2" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>Bubbles of the Foam</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l3" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c3" class="choice" draggable="true" ondragstart="drag(event)">
+          วนวัลลรี
+        </div>
+      </div>
+      <div id="r3" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>In the Great God's Hair</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l4" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c4" class="choice" draggable="true" ondragstart="drag(event)">
+          อลิจุมพิตา
+        </div>
+      </div>
+      <div id="r4" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>A Draught of the Blue</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l5" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c5" class="choice" draggable="true" ondragstart="drag(event)">
+          นาครีคำฉันท์
+        </div>
+      </div>
+      <div id="r5" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>An Essence of the Dusk</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l6" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c6" class="choice" draggable="true" ondragstart="drag(event)">
+          ทินมาลี
+        </div>
+      </div>
+      <div id="r6" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>A Heifer of the Dawn</div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l7" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c7" class="choice" draggable="true" ondragstart="drag(event)">
+          วัตสาตรี
+        </div>
+      </div>
+      <div id="r7" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      The Ashes of God
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l8" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c8" class="choice" draggable="true" ondragstart="drag(event)">
+          ศัตรุณชัย
+        </div>
+      </div>
+      <div id="r8" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      The Substance of a Dream
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l9" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c9" class="choice" draggable="true" ondragstart="drag(event)">
+          หงสาลัย
+        </div>
+      </div>
+      <div id="r9" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      An Incarnation of the Snow
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l10" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c10" class="choice" draggable="true" ondragstart="drag(event)">
+          อรุโณทัย
+        </div>
+      </div>
+      <div id="r10" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      A Syrup of the Bees
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l11" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c11" class="choice" draggable="true" ondragstart="drag(event)">
+          อปราชิตา
+        </div>
+      </div>
+      <div id="r11" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      The Livery of Eve
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l12" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c12" class="choice" draggable="true" ondragstart="drag(event)">
+          ขุมความเท็จ
+        </div>
+      </div>
+      <div id="r12" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      A Mine of Faults
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="pairboxes">
+      <div id="l13" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)">
+        <div id="c13" class="choice" draggable="true" ondragstart="drag(event)">
+          ปทุมทีป
+        </div>
+      </div>
+      <div id="r13" class="dropbox" ondrop="drop(event)" ondragover="drobable(event)"></div>
+    </div>
+    <div>
+      The Descent of the Sun
+    </div>
+  </div>
+
+</div>
+
+
+<script defer>
+let dragcount = 0
+
+drag = (event) => {
+  event.dataTransfer.setData('item', event.target.id)
+  event.dataTransfer.setData('from', resolve_box(event.target))
+}
+
+drop = (event) => {
+  event.preventDefault()
+  let item = event.dataTransfer.getData('item')
+  let from = event.dataTransfer.getData('from')
+  let onto = resolve_box(event.target)
+  if (onto.match(/^r\d+$/)) {
+    dragcount += 1
+    document.getElementById('dragcount').innerHTML = dragcount
+  }
+  if (from.slice(1) !== onto.slice(1)) {
+    document.getElementById(left(from)).appendChild(resolve_item(onto))
+  }
+  document.getElementById(onto).appendChild(document.getElementById(item))
+  grade(item, onto)
+}
+
+drobable = (event) => event.preventDefault()
+
+// ---------------------------------------------------------------------------
+
+left = (box) => `l${box.slice(1)}`
+right = (box) => `r${box.slice(1)}`
+
+resolve_box = (element) => {
+  while (!element.id.match(/^[lr]\d+/)) {
+    element = element.parentNode
+  }
+  return element.id
+}
+
+resolve_item = (box) => {
+  let parent = document.getElementById(left(box))
+  if (parent.getElementsByTagName('div').length === 0) {
+    parent = document.getElementById(right(box))
+  }
+  return ungrade(parent.removeChild(parent.getElementsByTagName('div')[0]))
+}
+
+grade = (item, onto) => {
+  let element = ungrade(document.getElementById(item))
+  if (onto.match(/^l\d+$/)) {
+    return
+  }
+  if (onto === right(item)) {
+    element.classList.add('correct')
+    lock(item)
+  } else {
+    element.classList.add('incorrect')
+  }
+}
+
+ungrade = (element) => {
+  element.classList.remove('correct')
+  element.classList.remove('incorrect')
+  return element
+}
+
+lock = (item) => {
+  document.getElementById(item).setAttribute('draggable', false)
+  document.getElementById(left(item)).setAttribute('ondrop', null)
+  document.getElementById(left(item)).setAttribute('ondragover', null)
+  document.getElementById(right(item)).setAttribute('ondrop', null)
+  document.getElementById(right(item)).setAttribute('ondragover', null)
+}
+
+randint = (min, max) => min + Math.floor(Math.random() * (max-min+1))
+shuffle = () => {
+  let size = document.getElementById('game').getElementsByClassName('choice').length
+  for (let i=0; i<size; i++) {
+    let first = `l${size-i}`
+    let second = `l${randint(1, size-i)}`
+    if (first !== second) {
+      let first_element = resolve_item(first)
+      let second_element = resolve_item(second)
+      document.getElementById(first).appendChild(second_element)
+      document.getElementById(second).appendChild(first_element)
+    }
+  }
+  let game = document.getElementById('game')
+  for (let i=game.children.length; i>=0; i--) {
+    game.appendChild(game.children[Math.random() * i | 0])
+  }
+}
+shuffle()
+</script>
